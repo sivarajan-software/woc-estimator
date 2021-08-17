@@ -29,7 +29,7 @@ function getEstimate() {
   xhttp.open("POST", "https://us-central1-vstpress-site2.cloudfunctions.net/getWOCEstimate");
   xhttp.setRequestHeader("Content-Type", "application/json;charset=UTF-8");
   xhttp.send(JSON.stringify(input));
-
+  return false;
 }
 
 function clearOutput() {
