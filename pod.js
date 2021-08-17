@@ -17,49 +17,20 @@ function getEstimate() {
     "quantity": parseInt(quantity),
   };
 
-  const costPerBWPrint = 2.25;
-  const costPerColPrint = 15;
+  output = {};
 
-  const costForLaminationFirst10Sheet = 200;
-  const costForLaminationEveryAddlSheet = 2.5;
-
-  const costForBindingFirst20Books = 500
-  const costForBindingEveryAddlBooks = 10;
-
-  const numberOfInnerPrints = Math.ceil(innerPages / 4) * quantity;
-  const numberOfCoverPrints = Math.ceil(quantity / 2);
-
-  const innerPrintCost = numberOfInnerPrints * costPerBWPrint;
-  const coverPrintCost = numberOfCoverPrints * costPerColPrint;
-
-  var laminationCost = costForLaminationFirst10Sheet;
-  if (numberOfCoverPrints > 10) {
-    const addl = numberOfCoverPrints - 10;
-    laminationCost += addl * costForLaminationEveryAddlSheet;
+  const xhttp = new XMLHttpRequest();
+  xhttp.onload = function () {
+    var data = JSON.parse(this.responseText);
+    document.getElementById("result").innerText = "Total Cost: Rs. " + data.jobCost + "\nEach Book: Rs. " + data.eachBook;
+    console.log(output);
   }
+  xhttp.open("POST", "http://localhost:5001/vstpress-site2/us-central1/getWOCEstimate");
+  xhttp.setRequestHeader("Content-Type", "application/json;charset=UTF-8");
+  xhttp.send(JSON.stringify(input));
 
-  var bindingCost = costForBindingFirst20Books;
-  if (quantity > 20) {
-    const addl = quantity - 20;
-    bindingCost += addl * costForBindingEveryAddlBooks;
-  }
+}
 
-  var jobCost = innerPrintCost
-    + coverPrintCost
-    + laminationCost
-    + bindingCost;
-
-  var eachBook = Math.round(jobCost / quantity);
-
-  output = {
-    "innerPrintCost": innerPrintCost,
-    "coverPrintCost": coverPrintCost,
-    "lamination": laminationCost,
-    "bindingCost": bindingCost,
-    "jobCost": jobCost,
-    "eachBook": eachBook,
-  };
-
-  console.log(output);
-  return false;
+function clearOutput() {
+  document.getElementById("result").innerText = "";
 }

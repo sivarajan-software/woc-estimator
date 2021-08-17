@@ -54,16 +54,17 @@
       <div class="form-group">
         <label for="bookSize">Book Size</label>
         <select class="form-control" id="bookSize">
-          <option value="140_210" selected="selected">140 x 210</option>
+          <option value="140_210" selected="selected" onchange="clearOutput()">140 x 210</option>
         </select>
       </div>
       <div class="form-group">
         <label for="innerPages">Inner Pages</label>
-        <input type="number" class="form-control" id="innerPages" placeholder="Pages" min="2" max="1000" required value="64">
+        <input type="number" class="form-control" id="innerPages" placeholder="Pages" min="2" max="1000" required
+          value="64" onchange="clearOutput()">
       </div>
       <div class="form-group">
         <label for="innerPaper">Inner Paper</label>
-        <select class="form-control" id="innerPaper">
+        <select class="form-control" id="innerPaper" onchange="clearOutput()">
           <option value="60_map" selected="selected">60 GSM White Maplitho</option>
           <option value="70_map">70 GSM White Maplitho</option>
           <option value="80_map">80 GSM White Maplitho</option>
@@ -71,21 +72,21 @@
       </div>
       <div class="form-group">
         <label for="coverPages">Cover Pages</label>
-        <select class="form-control" id="coverPages">
+        <select class="form-control" id="coverPages" onchange="clearOutput()">
           <option value="single_side" selected="selected">1 & 4 Pages</option>
           <option value="both_side">Both Side Printing</option>
         </select>
       </div>
       <div class="form-group">
         <label for="coverBoard">Cover Board</label>
-        <select class="form-control" id="coverBoard">
+        <select class="form-control" id="coverBoard" onchange="clearOutput()">
           <option value="250_art" selected="selected">250 GSM Art</option>
           <option value="300_art">300 GSM Art</option>
         </select>
       </div>
       <div class="form-group">
         <label for="finishing">Finishing</label>
-        <select class="form-control" id="finishing">
+        <select class="form-control" id="finishing" onchange="clearOutput()">
           <option value="none">None</option>
           <option value="gloss" selected="selected">Gloss Lamination</option>
           <option value="matt">Matt Lamination</option>
@@ -93,11 +94,14 @@
       </div>
       <div class="form-group">
         <label for="quantity">Quantity</label>
-        <input type="number" class="form-control" id="quantity" placeholder="Quantity" min="1" max="500" required value="10">
+        <input type="number" class="form-control" id="quantity" placeholder="Quantity" min="1" max="500" required
+          value="10" onchange="clearOutput()">
       </div>
+      <span id="result" style="font-weight: bold; display: block; margin-bottom: 15px;"></span>
       <button type="submit" class="btn btn-primary">Get Estimate</button>
     </form>
 
+    <div style="height: 100px"></div>
   </div><!-- /.container -->
 
 
