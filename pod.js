@@ -70,8 +70,8 @@ function getEstimate(input, callback) {
     var data = JSON.parse(this.responseText);
     callback(data);
   }
-  xhttp.open("POST", "http://localhost:5001/vstpress-site2/us-central1/getWOCEstimate");
-  // xhttp.open("POST", "https://us-central1-vstpress-site2.cloudfunctions.net/getWOCEstimate");
+  // xhttp.open("POST", "http://localhost:5001/vstpress-site2/us-central1/getWOCEstimate");
+  xhttp.open("POST", "https://us-central1-vstpress-site2.cloudfunctions.net/getWOCEstimate");
   xhttp.setRequestHeader("Content-Type", "application/json;charset=UTF-8");
   xhttp.send(JSON.stringify(input));
 }
