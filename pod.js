@@ -58,7 +58,7 @@ function getCalendarEstimate() {
     console.log(result);
     const totalStr = `Total Cost: ${toTotalCurrency(result.total)}/-`;
     const rateStr = `Each Rate: ${toRateCurrency(result.rate)}`;
-    document.getElementById("result").innerText = totalStr + "\n" + rateStr;
+    document.getElementById("result").innerText = totalStr + "\n" + rateStr + "\n GST @ 12% extra";
   });
 
   return false
